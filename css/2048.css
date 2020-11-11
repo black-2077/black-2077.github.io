@@ -2,15 +2,17 @@
 	padding: 0;
 	margin: 0;
 	text-align: center;
-	touch-action: none;
 }
-.ui-loader-default{ display:none}
+
+.ui-loader-default{ 
+	display:none
+}
 @font-face {
 	font-family:'Meows';
 	src: url(../fonts/Meows.ttf);
 }
 body{
-	background-image: url(../img/至宝.jpg);
+	background-image: url(../img/wr.jpg);
 	background-size: cover;
 }
 span{
@@ -54,8 +56,8 @@ td{
 	border: aqua 8px solid;
 	border-radius: 25px;
 	overflow: hidden;
-	width: 80px;
-	height: 80px;
+ 	width: 80px;
+	height: 80px; 
 	font-size: 36px;
 	font-family:'Meows';
 	font-weight: 800;
