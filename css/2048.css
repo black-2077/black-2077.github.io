@@ -1,0 +1,74 @@
+*{
+	padding: 0;
+	margin: 0;
+	text-align: center;
+}
+
+.ui-loader-default{ display:none}
+@font-face {
+	font-family:'Meows';
+	src: url(../fonts/Meows.ttf);
+}
+body{
+	background-image: url(../img/至宝.jpg);
+	background-size: cover;
+}
+span{
+	font-family: "microsoft yahei";
+	font-weight: 500;
+}
+div.container{
+	padding: 50px;
+}
+div.mark{
+	font-size: 20px;
+	margin: 5px;
+}
+h3{
+	padding: 10px;
+	font-size: 46px;
+	font-weight: 600;
+	font-family: "幼圆";
+	margin: 0 auto;
+	color: purple;
+}
+
+i{
+	font-style: normal;
+	font-family: "Meows";
+	font-weight: 800;
+	font-size: 30px;
+	color: #daac3f;
+	padding-right: 5px;
+}
+table{
+	margin: 0 auto;
+	border-spacing: 0;
+	border-collapse: separate;
+	border: aqua 8px solid;
+	border-radius: 25px;
+	background-color: aqua;
+}
+td{	
+	border-collapse: separate; 
+	border: aqua 8px solid;
+	border-radius: 25px;
+	overflow: hidden;
+	width: 80px;
+	height: 80px;
+	font-size: 36px;
+	font-family:'Meows';
+	font-weight: 800;
+	background-color: white;
+}
+button{
+	margin-top: 10px;
+	font-family: "黑体";
+	font-size: 18px;
+	border-style:none;
+	border-radius: 8px;
+	width: 100px;
+	height: 50px;
+	background-color: #d9534f;
+	color: white;
+}
