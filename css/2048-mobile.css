@@ -4,19 +4,17 @@
 	text-align: center;
 }
 
-.ui-loader-default{ 
-	display:none
-}
+.ui-loader-default{ display:none}
+.ui-mobile-viewport{ border:none;}
+.ui-page {padding: 0; margin: 0; outline: 0}
 @font-face {
 	font-family:'Meows';
 	src: url(../fonts/Meows.ttf);
 }
 body{
-	margin-top: 100px;
 	background-image: url(../img/qop.jpg);
 	background-repeat: no-repeat;
 	background-size: cover
-	
 }
 span{
 	font-family: "microsoft yahei";
