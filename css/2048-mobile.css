@@ -14,7 +14,8 @@
 body{
 	background-image: url(../img/qop.jpg);
 	background-repeat: no-repeat;
-	background-size: cover
+	background-size: cover;
+	overflow: hidden;
 }
 span{
 	font-family: "microsoft yahei";
