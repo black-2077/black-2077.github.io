@@ -5,31 +5,30 @@ window.onload = function() {
 	create();
 	refreshBgcolor();
 }
-
 function refreshBgcolor() {
 	var td_list = document.getElementsByTagName("td");
 	for (var i = 0; i < td_list.length; i++) {
 		td_list[i].style.backgroundColor = "white"
 		switch (td_list[i].innerText) {
 			case '2':
-				td_list[i].style.backgroundColor = "chartreuse";
-				td_list[i].style.color = "#C75F3E";
+				td_list[i].style.backgroundColor = "#eae0c2";
+				td_list[i].style.color = "black";
 				break;
 			case '4':
-				td_list[i].style.backgroundColor = "crimson";
-				td_list[i].style.color = "#c79b2b";
+				td_list[i].style.backgroundColor = "#afdd43";
+				td_list[i].style.color = "#c15c2a";
 				break;
 			case '8':
-				td_list[i].style.backgroundColor = "#FF8C00";
+				td_list[i].style.backgroundColor = "#f89b2f";
 				td_list[i].style.color = "#99462c";
 				break;
 			case '16':
-				td_list[i].style.backgroundColor = "#ba69e8";
-				td_list[i].style.color = "#69c3c7";
+				td_list[i].style.backgroundColor = "chartreuse";
+				td_list[i].style.color = "#C75F3E";
 				break;
 			case '32':
 				td_list[i].style.backgroundColor = "palegoldenrod";
-				td_list[i].style.color = "#c7125b";
+				td_list[i].style.color = "#f81674";
 				break;
 			case '64':
 				td_list[i].style.backgroundColor = "lightpink";
@@ -44,16 +43,16 @@ function refreshBgcolor() {
 				td_list[i].style.color = "#C75F3E";
 				break;
 			case '512':
-				td_list[i].style.backgroundColor = "forestgreen";
-				td_list[i].style.color = "#759d30";
+				td_list[i].style.backgroundColor = "#baba13";
+				td_list[i].style.color = "#54360f";
 				break;
 			case '1024':
 				td_list[i].style.backgroundColor = "midnightblue";
 				td_list[i].style.color = "#09d9c8";
 				break;
 			case '2048':
-				td_list[i].style.backgroundColor = "sienna";
-				td_list[i].style.color = "#c7c170";
+				td_list[i].style.backgroundColor = "#3a2a4d";
+				td_list[i].style.color = "#ffe0c1";
 				break;
 			case '4096':
 				td_list[i].style.backgroundColor = "black";
@@ -62,7 +61,6 @@ function refreshBgcolor() {
 		}
 	}
 }
-//  定义初始游戏功能方法，要求在两个随机的空白位置生成2个数字块，数字只能为2或4，2和4出现的概率为3:1；提示：[2,2,2,4]
 // 只有合并成功,或者移动成功的前提下,才执行create操作
 function create() {
 	var arr = [2, 2, 2, 4];
@@ -249,15 +247,13 @@ function combine(coord, old_coord) {
 	var old_val = $(old_coord).text();
 	if (val == old_val) {
 		$(old_coord).text(val * 2);
-		$(old_coord).addClass("animate__zoomInDown");
+		$(old_coord).addClass("animate__heartBeat");
 		$(coord).text('');
 		$(coord).addClass("empty");
 		$(coord).addClass("animate__rotateOut");
-		soundManager.play("combine_audio");
 		refreshMark(val);
 		return true;
 	} else {
-		$(coord).addClass("animate__headShake")
 		return false;
 	}
 }
@@ -293,8 +289,7 @@ function removeAnimate() {
 	for (var i = 0; i < l; i++) {
 		$(".animate__animated").eq(i).removeClass("animate__rubberBand");
 		$(".animate__animated").eq(i).removeClass("animate__rotateOut");
-		$(".animate__animated").eq(i).removeClass("animate__zoomInDown");
-		$(".animate__animated").eq(i).removeClass("animate__headShake");
+		$(".animate__animated").eq(i).removeClass("animate__heartBeat");
 	}
 }
 //初始化maxScore的方法
@@ -330,6 +325,18 @@ function loadSounds() {
 				autoPlay: false,
 				url: 'sound/combine_audio.mp3'
 			});
+			soundManager.createSound({
+				id: 'victory_audio',
+				autoLoad: true,
+				autoPlay: false,
+				url: 'sound/victory_audio.mp3'
+			});
+			soundManager.createSound({
+				id: 'victory_music_audio',
+				autoLoad: true,
+				autoPlay: false,
+				url: 'sound/victory_music_audio.mp3'
+			});
 		}
 	});
 }
@@ -339,69 +346,51 @@ $(document).ready(function() {
 		location.reload();
 	});
 });
-//通过触摸控制移动的方法
-$(document).on("pagecreate", "body", function() {
+// 通过触摸控制移动的方法
+
+$(document).ready(function() {
+
 	var startX, startY, endX, endY;
-
-	document.getElementsByTagName("body")[0].addEventListener("touchstart", touchStart, false);
-	document.getElementsByTagName("body")[0].addEventListener("touchmove", touchMove, false);
-	document.getElementsByTagName("body")[0].addEventListener("touchend", touchEnd, false);
-
-	function touchStart(event) {
+	$('body').on('touchstart',function(){
 		var touch = event.touches[0];
 		startY = touch.pageY;
 		startX = touch.pageX;
-	}
-
-	function touchMove(event) {
-		var touch = event.touches[0];
-		endY = startY - touch.pageY;
-		endX = startX - touch.pageX;
-	}
-
-	function touchEnd(event) {
+	});
+	$('body').on('touchmove',function(){
+	 	var touch = event.touches[0];
+	 	endY = startY - touch.pageY;
+	 	endX = startX - touch.pageX;
+	});
+	$('body').on('touchend',function(){
+		removeAnimate()
 		//100是给定触上下方向摸起始的坐标差
-		if (endY > 100) {
-			if (up()) {
-				create();
-			}
-				
-
-			refreshBgcolor();
-		} else if (endY < 100) {
-			var key = down();
-			if (key) {
-				create();
-			}
-			if ($(".empty").length == 0) {
-				if (check()) {
-					soundManager.play('fail_audio');
-					window.setTimeout("alert('GAME OVER')", 10);
+		if(endY/endX>1){
+			if (endY > 80) {
+				if (up()) {
+					create();
+				}
+				refreshBgcolor();
+			} else if (endY < 80) {
+				if (down()) {
+					create();
 				}
 			}
-			refreshBgcolor();
+		}else{
+			if (endX > 60) {
+				if (left()) {
+					create();
+				}
+				refreshBgcolor();
+			} else if (endX < 60) {
+				if (right()) {
+					create();
+				}
+			}
 		}
+		
 		//如果不重置，会出现问题
+			refreshBgcolor();
 		endY = 0;
-	}
-	$("body").on("swipeleft", function() {
-		if (left()) {
-			create();
-			if (check()) {
-				soundManager.play('fail_audio');
-				window.setTimeout("alert('GAME OVER')", 10);
-			}
-		}
-		refreshBgcolor();
-	});
-	$("body").on("swiperight", function() {
-		if (right()) {
-			create();
-			if (check()) {
-				soundManager.play('fail_audio');
-				window.setTimeout("alert('GAME OVER')", 10);
-			}
-		}
-		refreshBgcolor();
+		endX = 0;
 	});
 });
