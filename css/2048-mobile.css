@@ -8,18 +8,27 @@
 .ui-mobile-viewport{ border:none;}
 .ui-page {padding: 0; margin: 0; outline: 0}
 @font-face {
-	font-family:'Meows';
-	src: url(../fonts/Meows.ttf);
+	font-family:'站酷小薇LOGO体';
+	src: url(../fonts/ZhanKu.otf);
+}
+@font-face {
+	font-family:'Cirebton';
+	src: url(../fonts/Cirebon.ttf);
+}
+@font-face {
+	font-family:'Questrial';
+	src: url(../fonts/Questrial.ttf);
 }
 body{
-	background-image: url(../img/qop.jpg);
-	background-repeat: no-repeat;
+	background-image: url(../img/bg.jpg);
 	background-size: cover;
-	overflow: hidden;
+	background-repeat: no-repeat;
+	overflow:-Scroll;
+	overflow-y:hidden;
 }
 span{
-	font-family: "microsoft yahei";
 	font-weight: 500;
+	line-height: 60px;
 }
 div.container{
 	padding: 50px;
@@ -28,51 +37,53 @@ div.mark{
 	font-size: 20px;
 	margin: 5px;
 }
-h3{
-	padding: 10px;
-	font-size: 46px;
+div.score{
+	font-size: 20px;
+	margin: 5px;
+}
+h3.title{
+	padding-top: 30px;
+	font-size: 56px;
 	font-weight: 600;
-	font-family: "幼圆";
+	font-family: "站酷小薇LOGO体";
 	margin: 0 auto;
-	color: red;
+	color: purple;
 }
 
 i{
 	font-style: normal;
-	font-family: "Meows";
-	font-weight: 800;
-	font-size: 30px;
-	color: #daff1d;
+	font-family: "Cirebton";
+	font-size: 60px;
+	color: #000000;
 	padding-right: 5px;
 }
-table{
+table.main{
 	margin: 0 auto;
-	border-spacing: 0;
+	border-spacing: 5px;
 	border-collapse: separate;
 	border: aqua 3px solid;
 	border-radius: 15px;
 	background-color: aqua;
 }
-td{	
-	border-collapse: separate; 
+table.main td{
 	border: aqua 3px solid;
-	border-radius: 15px;
+	border-radius: 10px;
 	overflow: hidden;
- 	width: 50px;
-	height: 50px; 
-	font-size: 20px;
-	font-family:'Meows';
-	font-weight: 600;
+ 	width: 40px;
+	height: 40px; 
+	font-size: 16px;
+	font-family:'Questrial';
+	font-weight: 800;
 	background-color: white;
 }
-button{
-	margin-top: 10px;
-	font-family: "黑体";
-	font-size: 18px;
-	border-style:none;
-	border-radius: 8px;
-	width: 100px;
-	height: 50px;
-	background-color: #d9534f;
-	color: white;
+#myModal{
+	margin-top: 200px;
+}
+.modal-title{
+	font-size: 20px;
+	font-family: "站酷小薇LOGO体";
+}
+.modal-body{
+	font-size: 30px;
+	font-family: "Cirebton";
 }
