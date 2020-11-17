@@ -1,0 +1,91 @@
+*{
+	padding: 0;
+	margin: 0;
+	text-align: center;
+}
+.small-fire{  
+	width: 8px;
+	height: 8px;
+    border-radius: 50%; 
+}  
+.big-fire{
+	width: 12px;
+	height: 12px;
+	border-radius: 50%; 
+}
+.ui-loader-default{ 
+	display:none
+}
+@font-face {
+	font-family:'站酷小薇LOGO体';
+	src: url(../fonts/ZhanKu.otf);
+}
+@font-face {
+	font-family:'Cirebton';
+	src: url(../fonts/Cirebon.ttf);
+}
+@font-face {
+	font-family:'Questrial';
+	src: url(../fonts/Questrial.ttf);
+}
+body{
+	background-image: url(../img/wr.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
+	overflow:-Scroll;
+	overflow-y:hidden;
+}
+span{
+	font-weight: 500;
+	line-height: 60px;
+}
+div.score{
+	font-size: 20px;
+	margin: 5px;
+}
+h3.title{
+	padding-top: 30px;
+	font-size: 66px;
+	font-weight: 600;
+	font-family: "站酷小薇LOGO体";
+	margin: 0 auto;
+	color: purple;
+}
+
+i{
+	font-style: normal;
+	font-family: "Cirebton";
+	font-size: 60px;
+	color: #000000;
+	padding-right: 5px;
+}
+table.main{
+	margin: 0 auto;
+	border-spacing: 10px;
+	border-collapse: separate;
+	border: aqua 5px solid;
+	border-radius: 30px;
+	background-color: aqua;
+}
+table.main td{
+	border: aqua 5px solid;
+	border-radius: 20px;
+	overflow: hidden;
+ 	width: 80px;
+	height: 80px; 
+	font-size: 40px;
+	font-family:'Questrial';
+	font-weight: 800;
+	background-color: white;
+}
+#myModal{
+	margin-top: 200px;
+}
+.modal-title{
+	font-size: 20px;
+	font-family: "站酷小薇LOGO体";
+}
+.modal-body{
+	font-size: 30px;
+	font-family: "Cirebton";
+}
