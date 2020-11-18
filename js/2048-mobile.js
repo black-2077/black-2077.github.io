@@ -374,13 +374,13 @@ $(document).ready(function() {
 		if(endY/endX>1){
 			if (endY > 0) {
 				key = up();
-			} else if (endY < 0) {
+			} else  {
 				key = down();
 			}
 		}else{
 			if (endX > 0) {
 				key = left();
-			} else if (endX < 0) {
+			} else  {
 				key = right();
 			}
 		}
