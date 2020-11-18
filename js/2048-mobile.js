@@ -349,7 +349,7 @@ function loadSounds() {
 }
 //重新载入的方法
 $(document).ready(function() {
-	$("restart").click(function() {
+	$(".restart").click(function() {
 		location.reload();
 	});
 });
