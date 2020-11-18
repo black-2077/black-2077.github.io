@@ -4,6 +4,7 @@ window.onload = function() {
 	create();
 	create();
 	refreshBgcolor();
+	end = true;
 }
 function refreshBgcolor() {
 	var td_list = document.getElementsByTagName("td");
@@ -252,6 +253,10 @@ function combine(coord, old_coord) {
 		$(coord).addClass("empty");
 		$(coord).addClass("animate__rotateOut");
 		refreshMark(val);
+		//成功条件
+		if(val==1024){
+			victory(event);
+		}
 		return true;
 	} else {
 		return false;
@@ -259,8 +264,10 @@ function combine(coord, old_coord) {
 }
 //检查游戏结束的方法
 function check() {
-	var result = true;
+	//默认result为false（游戏不结束），如果无空格，且相邻格没有相同数字，则游戏结束
+	var result = false;
 	if ($(".empty").length == 0) {
+		result = true;
 		for (var x = 0; x < 4; x++) {
 			for (var y = 0; y < 4; y++) {
 				var coord = '.x' + x + 'y' + y;
@@ -342,7 +349,7 @@ function loadSounds() {
 }
 //重新载入的方法
 $(document).ready(function() {
-	$("button").click(function() {
+	$("restart").click(function() {
 		location.reload();
 	});
 });
@@ -363,34 +370,46 @@ $(document).ready(function() {
 	});
 	$('body').on('touchend',function(){
 		removeAnimate()
-		//100是给定触上下方向摸起始的坐标差
+		var key = false;
 		if(endY/endX>1){
-			if (endY > 80) {
-				if (up()) {
-					create();
-				}
-				refreshBgcolor();
-			} else if (endY < 80) {
-				if (down()) {
-					create();
-				}
+			if (endY > 0) {
+				key = up();
+			} else if (endY < 0) {
+				key = down();
 			}
 		}else{
-			if (endX > 60) {
-				if (left()) {
-					create();
-				}
-				refreshBgcolor();
-			} else if (endX < 60) {
-				if (right()) {
-					create();
-				}
+			if (endX > 0) {
+				key = left();
+			} else if (endX < 0) {
+				key = right();
 			}
 		}
-		
-		//如果不重置，会出现问题
+		if(key){
+			create();
 			refreshBgcolor();
+		}else if(check()){
+			if(end){
+			fail();
+			end = false;
+			}
+		}
+		//如果不重置，会出现问题
 		endY = 0;
 		endX = 0;
 	});
 });
+//失败调用的方法
+function fail(){
+	soundManager.play('fail_audio');
+	$('.modal-body').html('<p>GAME FAILED!</p>');
+	$('.modal-title').html('<p>Sorry!</p>');
+	window.setTimeout("$('#myModal').modal('show')", 100);
+}
+//胜利调用的方法
+function victory(e){
+	soundManager.play("victory_music_audio");
+	soundManager.play("victory_audio");
+	$('.modal-body').html('<p>GAME CLEAR!</p>');
+	$('.modal-title').html('<p>Congratulations!</p>');
+	window.setTimeout("	$('#myModal').modal('show')", 100);
+};
