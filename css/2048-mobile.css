@@ -28,7 +28,6 @@ body{
 }
 span{
 	font-weight: 500;
-	line-height: 60px;
 }
 div.container{
 	padding: 50px;
@@ -43,7 +42,7 @@ div.score{
 }
 h3.title{
 	padding-top: 30px;
-	font-size: 56px;
+	font-size: 48px;
 	font-weight: 600;
 	font-family: "站酷小薇LOGO体";
 	margin: 0 auto;
@@ -53,7 +52,7 @@ h3.title{
 i{
 	font-style: normal;
 	font-family: "Cirebton";
-	font-size: 60px;
+	font-size: 48px;
 	color: #000000;
 	padding-right: 5px;
 }
@@ -69,9 +68,9 @@ table.main td{
 	border: aqua 3px solid;
 	border-radius: 10px;
 	overflow: hidden;
- 	width: 40px;
-	height: 40px; 
-	font-size: 16px;
+ 	width: 60px;
+	height: 60px; 
+	font-size: 24px;
 	font-family:'Questrial';
 	font-weight: 800;
 	background-color: white;
